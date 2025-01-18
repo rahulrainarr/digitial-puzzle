@@ -1,156 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Puzzle</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: Arial, sans-serif;
-        }
-        .puzzle-container {
-            display: grid;
-            grid-template-columns: repeat(7, 100px);
-            grid-template-rows: repeat(5, 100px);
-            gap: 2px;
-            margin-top: 20px;
-        }
-        .puzzle-piece {
-            width: 100px;
-            height: 100px;
-            cursor: grab;
-        }
-        .reset-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        .score {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .puzzle-selector {
-            margin-top: 20px;
-            padding: 10px;
-            font-size: 16px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Digital Puzzle</h1>
-    <p>Drag and drop the pieces to solve the puzzle!</p>
-    <select class="puzzle-selector" id="puzzleSelector">
-        <option value="puzzle1">Puzzle 1</option>
-        <option value="puzzle2">Puzzle 2</option>
-        <option value="puzzle3">Puzzle 3</option>
-    </select>
-    <div class="puzzle-container" id="puzzleContainer">
-        <!-- Puzzle pieces will be dynamically added here -->
-    </div>
-    <button class="reset-button" id="resetButton">Reset Puzzle</button>
-    <div class="score" id="score">Score: 0</div>
+# Digital Puzzle
 
-    <script>
-        const puzzleContainer = document.getElementById('puzzleContainer');
-        const resetButton = document.getElementById('resetButton');
-        const scoreElement = document.getElementById('score');
-        const puzzleSelector = document.getElementById('puzzleSelector');
+Welcome to the **Digital Puzzle**, a fun and interactive drag-and-drop puzzle game! This project features a simple yet engaging web-based puzzle application that is easy to use and designed for everyone to enjoy.
 
-        let score = 0;
+---
 
-        // Define puzzles with their piece paths
-        const puzzles = {
-            puzzle1: [
-                ...Array(35).keys()
-            ].map(i => `puzzle1/piece_${Math.floor(i / 7)}_${i % 7}.jpg`),
-            puzzle2: [
-                ...Array(35).keys()
-            ].map(i => `puzzle2/piece_${Math.floor(i / 7)}_${i % 7}.jpg`),
-            puzzle3: [
-                ...Array(35).keys()
-            ].map(i => `puzzle3/piece_${Math.floor(i / 7)}_${i % 7}.jpg`)
-        };
+## Features
 
-        // Function to shuffle and load puzzle pieces
-        function loadPuzzlePieces(puzzleKey) {
-            // Clear the container
-            puzzleContainer.innerHTML = '';
+- 🧩 **Drag-and-Drop Puzzle:** Rearrange puzzle pieces by dragging and dropping them into the correct positions.
+- 🔀 **Randomized Layout:** Each time you load the puzzle or click reset, the pieces shuffle for a new challenge.
+- 🎯 **Score Tracking:** Keep track of how many moves it takes to solve the puzzle.
+- 🌟 **Reset Button:** Quickly reset the puzzle to start fresh.
+- 📱 **Responsive Design:** The game works seamlessly on devices of all sizes.
 
-            // Get the selected puzzle pieces
-            const piecePaths = puzzles[puzzleKey];
+---
 
-            // Shuffle pieces randomly
-            const shuffledPieces = piecePaths.sort(() => Math.random() - 0.5);
+## How It Works
 
-            // Add pieces to the container
-            shuffledPieces.forEach((path, index) => {
-                const img = document.createElement('img');
-                img.src = path;
-                img.alt = `Puzzle Piece ${index + 1}`;
-                img.classList.add('puzzle-piece');
-                img.draggable = true;
+1. The puzzle pieces are dynamically loaded from the `puzzle1` directory.
+2. On page load or reset, the puzzle pieces are shuffled randomly.
+3. Drag and drop the pieces to solve the puzzle.
+4. The score increments every time you swap two pieces.
 
-                // Add drag-and-drop functionality
-                img.addEventListener('dragstart', dragStart);
-                img.addEventListener('dragover', dragOver);
-                img.addEventListener('drop', drop);
+---
 
-                puzzleContainer.appendChild(img);
-            });
+## Folder Structure
 
-            // Reset score
-            score = 0;
-            updateScore();
-        }
+```
+/ (root)
+|-- index.html        # Main HTML file
+|-- /puzzle1/         # Directory containing puzzle pieces
+    |-- piece_0_0.jpg # Puzzle piece images
+    |-- piece_0_1.jpg
+    |-- ...
+```
 
-        // Load the initial puzzle
-        loadPuzzlePieces(puzzleSelector.value);
+---
 
-        // Reset button functionality
-        resetButton.addEventListener('click', () => loadPuzzlePieces(puzzleSelector.value));
+## Installation
 
-        // Change puzzle on selector change
-        puzzleSelector.addEventListener('change', () => loadPuzzlePieces(puzzleSelector.value));
+### 1. Clone or Download the Repository
 
-        let draggedElement = null;
+```bash
+git clone https://github.com/your-username/digital-puzzle.git
+```
 
-        function dragStart(event) {
-            draggedElement = event.target;
-        }
+### 2. Set Up the Puzzle Images
 
-        function dragOver(event) {
-            event.preventDefault();
-        }
+Ensure the `puzzle1` directory contains 35 puzzle piece images named as:
+- `piece_0_0.jpg`
+- `piece_0_1.jpg`
+- ...
+- `piece_4_6.jpg`
 
-        function drop(event) {
-            event.preventDefault();
-            const target = event.target;
+### 3. Open in a Browser
 
-            if (target && target !== draggedElement && target.classList.contains('puzzle-piece')) {
-                // Swap the dragged and target pieces
-                const draggedSrc = draggedElement.src;
-                draggedElement.src = target.src;
-                target.src = draggedSrc;
+Simply open `index.html` in your browser to start playing the puzzle.
 
-                // Increase score
-                score++;
-                updateScore();
-            }
-        }
+---
 
-        function updateScore() {
-            scoreElement.textContent = `Score: ${score}`;
-        }
-    </script>
-</body>
-</html>
+## Hosting
+
+### Using GitHub Pages
+1. Push the project to a GitHub repository.
+2. Go to **Settings** > **Pages**.
+3. Select the branch and root directory as the source.
+4. Access your puzzle at `https://<username>.github.io/<repository>/`.
+
+### Using Netlify or Vercel
+1. Drag and drop the project folder into the platform’s dashboard.
+2. Follow on-screen instructions to deploy.
+
+---
+
+## How to Play
+
+1. **Shuffle**: The puzzle starts with shuffled pieces.
+2. **Drag & Drop**: Rearrange the pieces by dragging them into place.
+3. **Score**: Watch your score increase as you make moves.
+4. **Reset**: Click the reset button to start over with a fresh shuffle.
+
+---
+
+## Contributing
+
+Contributions are welcome! Feel free to submit a pull request or suggest features.
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+### Have Fun Solving the Puzzle! 🧩
+
