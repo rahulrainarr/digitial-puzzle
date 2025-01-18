@@ -39,21 +39,11 @@
             font-size: 18px;
             font-weight: bold;
         }
-        .puzzle-selector {
-            margin-top: 20px;
-            padding: 10px;
-            font-size: 16px;
-        }
     </style>
 </head>
 <body>
     <h1>Digital Puzzle</h1>
     <p>Drag and drop the pieces to solve the puzzle!</p>
-    <select class="puzzle-selector" id="puzzleSelector">
-        <option value="puzzle1">Puzzle 1</option>
-        <option value="puzzle2">Puzzle 2</option>
-        <option value="puzzle3">Puzzle 3</option>
-    </select>
     <div class="puzzle-container" id="puzzleContainer">
         <!-- Puzzle pieces will be dynamically added here -->
     </div>
@@ -64,30 +54,18 @@
         const puzzleContainer = document.getElementById('puzzleContainer');
         const resetButton = document.getElementById('resetButton');
         const scoreElement = document.getElementById('score');
-        const puzzleSelector = document.getElementById('puzzleSelector');
 
         let score = 0;
 
-        // Define puzzles with their piece paths
-        const puzzles = {
-            puzzle1: [
-                ...Array(35).keys()
-            ].map(i => `puzzle1/piece_${Math.floor(i / 7)}_${i % 7}.jpg`),
-            puzzle2: [
-                ...Array(35).keys()
-            ].map(i => `puzzle2/piece_${Math.floor(i / 7)}_${i % 7}.jpg`),
-            puzzle3: [
-                ...Array(35).keys()
-            ].map(i => `puzzle3/piece_${Math.floor(i / 7)}_${i % 7}.jpg`)
-        };
+        // Define puzzle piece paths for a single puzzle
+        const piecePaths = [
+            ...Array(35).keys()
+        ].map(i => `puzzle1/piece_${Math.floor(i / 7)}_${i % 7}.jpg`);
 
         // Function to shuffle and load puzzle pieces
-        function loadPuzzlePieces(puzzleKey) {
+        function loadPuzzlePieces() {
             // Clear the container
             puzzleContainer.innerHTML = '';
-
-            // Get the selected puzzle pieces
-            const piecePaths = puzzles[puzzleKey];
 
             // Shuffle pieces randomly
             const shuffledPieces = piecePaths.sort(() => Math.random() - 0.5);
@@ -113,14 +91,11 @@
             updateScore();
         }
 
-        // Load the initial puzzle
-        loadPuzzlePieces(puzzleSelector.value);
+        // Initial load of puzzle pieces
+        loadPuzzlePieces();
 
         // Reset button functionality
-        resetButton.addEventListener('click', () => loadPuzzlePieces(puzzleSelector.value));
-
-        // Change puzzle on selector change
-        puzzleSelector.addEventListener('change', () => loadPuzzlePieces(puzzleSelector.value));
+        resetButton.addEventListener('click', loadPuzzlePieces);
 
         let draggedElement = null;
 
