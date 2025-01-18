@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Puzzle</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+        .puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(7, 100px);
+            grid-template-rows: repeat(5, 100px);
+            gap: 2px;
+            margin-top: 20px;
+        }
+        .puzzle-piece {
+            width: 100px;
+            height: 100px;
+            cursor: grab;
+        }
+        .reset-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .score {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .puzzle-selector {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Digital Puzzle</h1>
+    <p>Drag and drop the pieces to solve the puzzle!</p>
+    <select class="puzzle-selector" id="puzzleSelector">
+        <option value="puzzle1">Puzzle 1</option>
+        <option value="puzzle2">Puzzle 2</option>
+        <option value="puzzle3">Puzzle 3</option>
+    </select>
+    <div class="puzzle-container" id="puzzleContainer">
+        <!-- Puzzle pieces will be dynamically added here -->
+    </div>
+    <button class="reset-button" id="resetButton">Reset Puzzle</button>
+    <div class="score" id="score">Score: 0</div>
+
+    <script>
+        const puzzleContainer = document.getElementById('puzzleContainer');
+        const resetButton = document.getElementById('resetButton');
+        const scoreElement = document.getElementById('score');
+        const puzzleSelector = document.getElementById('puzzleSelector');
+
+        let score = 0;
+
+        // Define puzzles with their piece paths
+        const puzzles = {
+            puzzle1: [
+                ...Array(35).keys()
+            ].map(i => `puzzle1/piece_${Math.floor(i / 7)}_${i % 7}.jpg`),
+            puzzle2: [
+                ...Array(35).keys()
+            ].map(i => `puzzle2/piece_${Math.floor(i / 7)}_${i % 7}.jpg`),
+            puzzle3: [
+                ...Array(35).keys()
+            ].map(i => `puzzle3/piece_${Math.floor(i / 7)}_${i % 7}.jpg`)
+        };
+
+        // Function to shuffle and load puzzle pieces
+        function loadPuzzlePieces(puzzleKey) {
+            // Clear the container
+            puzzleContainer.innerHTML = '';
+
+            // Get the selected puzzle pieces
+            const piecePaths = puzzles[puzzleKey];
+
+            // Shuffle pieces randomly
+            const shuffledPieces = piecePaths.sort(() => Math.random() - 0.5);
+
+            // Add pieces to the container
+            shuffledPieces.forEach((path, index) => {
+                const img = document.createElement('img');
+                img.src = path;
+                img.alt = `Puzzle Piece ${index + 1}`;
+                img.classList.add('puzzle-piece');
+                img.draggable = true;
+
+                // Add drag-and-drop functionality
+                img.addEventListener('dragstart', dragStart);
+                img.addEventListener('dragover', dragOver);
+                img.addEventListener('drop', drop);
+
+                puzzleContainer.appendChild(img);
+            });
+
+            // Reset score
+            score = 0;
+            updateScore();
+        }
+
+        // Load the initial puzzle
+        loadPuzzlePieces(puzzleSelector.value);
+
+        // Reset button functionality
+        resetButton.addEventListener('click', () => loadPuzzlePieces(puzzleSelector.value));
+
+        // Change puzzle on selector change
+        puzzleSelector.addEventListener('change', () => loadPuzzlePieces(puzzleSelector.value));
+
+        let draggedElement = null;
+
+        function dragStart(event) {
+            draggedElement = event.target;
+        }
+
+        function dragOver(event) {
+            event.preventDefault();
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            const target = event.target;
+
+            if (target && target !== draggedElement && target.classList.contains('puzzle-piece')) {
+                // Swap the dragged and target pieces
+                const draggedSrc = draggedElement.src;
+                draggedElement.src = target.src;
+                target.src = draggedSrc;
+
+                // Increase score
+                score++;
+                updateScore();
+            }
+        }
+
+        function updateScore() {
+            scoreElement.textContent = `Score: ${score}`;
+        }
+    </script>
+</body>
+</html>
