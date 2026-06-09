@@ -1,0 +1,130 @@
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #243447;
+  background: #f4f7fb;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: #f4f7fb; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.app-header {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 16px clamp(18px, 4vw, 54px); color: white; background: #38598b;
+}
+.brand, .header-actions, .game-topline, .dialog-heading, .welcome-bar, .section-heading { display: flex; align-items: center; gap: 14px; }
+.logo { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 15px; color: #38598b; background: #f8cf5b; font-size: 24px; }
+h1, h2, p { margin: 0; }
+h1 { font-size: 1.45rem; }
+h2 { font-size: clamp(1.45rem, 3vw, 2rem); }
+.brand p { color: #dce8f8; margin-top: 2px; }
+
+main { max-width: 1180px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 38px) 44px; }
+.welcome-bar, .section-heading { justify-content: space-between; }
+.welcome-bar { margin-bottom: 24px; padding: 18px 22px; border-radius: 18px; background: white; box-shadow: 0 3px 14px #a9b8cc28; }
+.eyebrow { color: #58739b; font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 5px; }
+.progress-box { min-width: 94px; padding: 9px 14px; text-align: center; border-radius: 14px; background: #fff7da; color: #775c00; }
+.progress-box span { display: block; font-size: 1.55rem; font-weight: 800; }
+.progress-box small { font-weight: 700; }
+
+.view { display: none; }
+.view.active { display: block; }
+.difficulty-badge { padding: 8px 14px; border-radius: 99px; background: #e1efff; color: #38598b; font-weight: 800; text-transform: capitalize; }
+.recommendation-card { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-top: 16px; padding: 16px 18px; border: 2px solid #c9e4d8; border-radius: 16px; background: #eef9f4; }
+.recommendation-card h3 { margin: 0 0 5px; color: #307359; }
+.recommendation-card p:last-child { color: #53657a; line-height: 1.4; }
+.learning-summary { margin-top: 12px; color: #5b6c80; font-size: .93rem; font-weight: 700; }
+.puzzle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 15px; margin: 18px 0; }
+.puzzle-card { padding: 18px; min-height: 178px; text-align: left; border: 2px solid transparent; border-radius: 18px; background: white; color: #243447; box-shadow: 0 3px 14px #a9b8cc28; transition: .15s ease; }
+.puzzle-card:hover, .puzzle-card:focus-visible { border-color: #6e93c5; transform: translateY(-2px); outline: none; }
+.puzzle-icon { display: grid; width: 54px; height: 54px; place-items: center; border-radius: 16px; background: #e9f2ff; font-size: 28px; }
+.puzzle-card h3 { margin: 12px 0 5px; font-size: 1.15rem; }
+.puzzle-card p { color: #5b6c80; line-height: 1.45; }
+.calm-note { padding: 16px 18px; border-left: 5px solid #6ca58b; border-radius: 10px; background: #e7f5ef; line-height: 1.45; }
+
+.soft-button, .primary-button {
+  border: 0; border-radius: 10px; padding: 11px 15px; font-weight: 800;
+}
+.soft-button { color: #38598b; background: #edf4ff; }
+.app-header .soft-button { color: white; background: #ffffff22; }
+.primary-button { color: white; background: #38598b; }
+.full-width { width: 100%; }
+
+.game-topline { justify-content: space-between; margin-bottom: 16px; }
+.game-topline div { flex: 1; }
+.instruction { max-width: 740px; color: #53657a; font-size: 1.08rem; line-height: 1.5; margin-bottom: 18px; }
+.game-area { min-height: 280px; padding: 20px; border-radius: 18px; background: white; box-shadow: 0 3px 14px #a9b8cc28; }
+.choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(115px, 1fr)); gap: 12px; }
+.answer-card { min-height: 105px; padding: 12px; border: 3px solid #d9e3ef; border-radius: 16px; background: #fbfdff; color: #243447; font-size: 1.12rem; font-weight: 800; }
+.answer-card .big { display: block; font-size: 2rem; margin-bottom: 6px; }
+.answer-card:hover, .answer-card:focus-visible { border-color: #82a8d7; outline: none; }
+.answer-card.correct { border-color: #4f9c7d; background: #e7f5ef; }
+.answer-card.try-again { border-color: #d69e52; background: #fff7df; }
+.feedback { min-height: 60px; padding: 14px 2px 0; color: #38598b; font-size: 1.1rem; font-weight: 800; }
+.feedback.success { color: #307359; }
+.celebrate { animation: pop .55s ease; }
+@keyframes pop { 50% { transform: scale(1.03); } }
+
+.pattern-row, .sequence-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; padding: 18px 0 26px; }
+.pattern-token { display: grid; width: 68px; height: 68px; place-items: center; border-radius: 16px; background: #eef4fb; font-size: 2rem; font-weight: 800; }
+.memory-grid { display: grid; grid-template-columns: repeat(4, minmax(65px, 110px)); justify-content: center; gap: 12px; }
+.memory-card { height: 90px; border: 3px solid #cbd9e9; border-radius: 15px; background: #eaf2fb; color: #38598b; font-size: 0; font-weight: 800; }
+.memory-card.revealed, .memory-card.matched { font-size: 2rem; background: #fff9e4; }
+.memory-card.matched { border-color: #4f9c7d; background: #e7f5ef; }
+.word-prompt { text-align: center; padding: 18px 0; font-size: clamp(1.7rem, 5vw, 2.5rem); font-weight: 800; letter-spacing: .08em; color: #38598b; }
+.learning-question { max-width: 760px; margin: 0 auto 20px; padding: 15px 17px; border-radius: 14px; background: #edf4ff; color: #38598b; font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 800; line-height: 1.35; text-align: center; }
+.logic-board { display: grid; gap: 16px; }
+.logic-context { padding: 16px 18px; border: 2px solid #d8e6f4; border-radius: 16px; background: #f7fbff; color: #38598b; line-height: 1.45; }
+.logic-context .eyebrow { color: #307359; }
+.logic-grid { align-items: stretch; }
+.logic-choice { display: grid; align-content: center; justify-items: center; gap: 7px; }
+.shape-chip { display: grid; width: 54px; height: 54px; place-items: center; border-radius: 16px; background: #edf4ff; color: #38598b; font-size: .78rem; font-weight: 900; letter-spacing: .03em; }
+.step-progress { min-height: 32px; padding: 8px 12px; border-radius: 12px; background: #fff7df; color: #715a1b; font-weight: 800; text-align: center; }
+
+dialog { width: min(680px, calc(100vw - 24px)); border: 0; border-radius: 18px; padding: 0; box-shadow: 0 18px 60px #26384f55; }
+dialog::backdrop { background: #24344788; }
+.dialog-card { display: grid; gap: 15px; padding: 24px; }
+.dialog-intro { color: #5b6c80; line-height: 1.45; }
+label, legend { color: #3b4b5e; font-weight: 800; }
+input[type="text"], input[type="number"] { width: 100%; margin-top: 6px; padding: 12px; border: 2px solid #d7e1ed; border-radius: 10px; }
+fieldset { border: 0; padding: 0; margin: 0; }
+.choice-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; margin-top: 7px; }
+.choice-card input { position: absolute; opacity: 0; }
+.choice-card span { display: block; min-height: 83px; padding: 12px; border: 2px solid #d7e1ed; border-radius: 12px; }
+.choice-card input:checked + span { border-color: #38598b; background: #edf4ff; }
+.choice-card small, .toggle-row small { display: block; margin-top: 5px; color: #6a7a8e; font-weight: 500; }
+.toggle-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px; border-radius: 12px; background: #f4f7fb; }
+.toggle-row input { width: 22px; height: 22px; }
+.dialog-heading { justify-content: space-between; }
+.settings-note { padding: 11px 12px; border-radius: 10px; background: #fff7df; color: #715a1b; font-size: .88rem; line-height: 1.4; }
+.wordsearch-grid { display: grid; grid-template-columns: repeat(var(--grid-size), minmax(34px, 52px)); justify-content: center; gap: 7px; }
+.letter-cell { aspect-ratio: 1; border: 2px solid #d5e1ef; border-radius: 9px; background: #fbfdff; color: #38598b; font-weight: 800; }
+.letter-cell:hover, .letter-cell:focus-visible { border-color: #82a8d7; outline: none; }
+.letter-cell.selected { border-color: #4f9c7d; background: #e7f5ef; color: #307359; }
+.crossword-card { display: grid; gap: 18px; justify-items: center; padding: 18px 0; }
+.crossword-clue { color: #3b4b5e; font-size: 1.2rem; text-align: center; }
+.crossword-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; }
+.crossword-cell { width: 44px; height: 52px; border: 3px solid #d5e1ef; border-radius: 8px; text-align: center; color: #38598b; font-size: 1.35rem; font-weight: 800; text-transform: uppercase; }
+.crossword-cell:focus { border-color: #82a8d7; outline: none; }
+.crossword-cell.try-again { border-color: #d69e52; background: #fff7df; }
+.crossword-cell.correct { border-color: #4f9c7d; background: #e7f5ef; }
+
+@media (max-width: 620px) {
+  .app-header { align-items: center; padding: 10px 14px; }
+  .brand { min-width: 0; gap: 8px; }
+  .brand p { display: none; }
+  .logo { width: 40px; height: 40px; border-radius: 12px; }
+  h1 { font-size: 1.12rem; }
+  .header-actions { flex-shrink: 0; gap: 6px; }
+  .app-header .soft-button { padding: 8px 9px; font-size: .78rem; }
+  .game-topline { align-items: stretch; flex-wrap: wrap; }
+  .recommendation-card { align-items: stretch; flex-direction: column; }
+  .choice-row { grid-template-columns: 1fr; }
+  .memory-grid { grid-template-columns: repeat(4, minmax(52px, 1fr)); }
+  .wordsearch-grid { gap: 4px; }
+  .letter-cell { font-size: .8rem; }
+  .answer-card { min-height: 86px; padding: 9px; overflow-wrap: anywhere; }
+  .answer-card .big { font-size: clamp(1rem, 5.4vw, 1.42rem); line-height: 1.18; }
+}

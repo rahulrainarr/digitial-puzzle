@@ -1,0 +1,6 @@
+android/.gradle/
+android/build/
+android/tools/
+android/app/build/
+*.tmp
+qa-*.png
