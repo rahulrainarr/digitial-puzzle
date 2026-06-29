@@ -1,97 +1,86 @@
-# Digital Puzzle
+# Digital Puzzle Learning Demo
 
-Welcome to the **Digital Puzzle**, a fun and interactive drag-and-drop puzzle game! This project features a simple yet engaging web-based puzzle application that is easy to use and designed for everyone to enjoy.
+## Executive Summary
 
----
+Digital Puzzle Learning Demo is a browser-based drag-and-drop puzzle project. It is best positioned as a learning and experimentation repository rather than a flagship enterprise AI project.
 
-## Features
+## Business Value
 
-- 🧩 **Drag-and-Drop Puzzle:** Rearrange puzzle pieces by dragging and dropping them into the correct positions.
-- 🔀 **Randomized Layout:** Each time you load the puzzle or click reset, the pieces shuffle for a new challenge.
-- 🎯 **Score Tracking:** Keep track of how many moves it takes to solve the puzzle.
-- 🌟 **Reset Button:** Quickly reset the puzzle to start fresh.
-- 📱 **Responsive Design:** The game works seamlessly on devices of all sizes.
+This repository demonstrates basic front-end interaction patterns, browser-based game mechanics, and lightweight responsive UI work. It can remain in the portfolio as an archived or experimental proof of concept, but it should not be pinned ahead of enterprise AI, cloud, cybersecurity, or data-center modernization repositories.
 
----
+## Key Features
 
-## How It Works
+- Drag-and-drop puzzle interaction
+- Randomized puzzle layout
+- Move/score tracking
+- Reset workflow
+- Browser-based deployment option
+- Responsive layout concept
 
-1. The puzzle pieces are dynamically loaded from the `puzzle1` directory.
-2. On page load or reset, the puzzle pieces are shuffled randomly.
-3. Drag and drop the pieces to solve the puzzle.
-4. The score increments every time you swap two pieces.
+## Target Users
 
----
+- Learners exploring front-end interaction
+- Developers reviewing simple browser game logic
+- Portfolio reviewers looking for early experimentation context
 
-## Folder Structure
+## Architecture Overview
 
+```text
+Browser UI
+|
+Puzzle Board / Drag-And-Drop Events
+|
+Shuffle / Move Tracking Logic
+|
+Static Image Assets
 ```
-/ (root)
-|-- index.html        # Main HTML file
-|-- /puzzle1/         # Directory containing puzzle pieces
-    |-- piece_0_0.jpg # Puzzle piece images
-    |-- piece_0_1.jpg
-    |-- ...
-```
 
----
+## Technology Stack
+
+- HTML
+- CSS
+- JavaScript
+- Static browser assets
+- Jupyter Notebook content currently also exists in the repository and should be separated or documented if retained
 
 ## Installation
 
-### 1. Clone or Download the Repository
-
-```bash
-git clone https://github.com/your-username/digital-puzzle.git
+```powershell
+git clone https://github.com/rahulrainarr/digitial-puzzle.git
+cd digitial-puzzle
 ```
 
-### 2. Set Up the Puzzle Images
+Open `Index.html` or the relevant HTML entrypoint in a browser.
 
-Ensure the `puzzle1` directory contains 35 puzzle piece images named as:
-- `piece_0_0.jpg`
-- `piece_0_1.jpg`
-- ...
-- `piece_4_6.jpg`
+## Usage
 
-### 3. Open in a Browser
+1. Open the puzzle page.
+2. Drag pieces into the desired positions.
+3. Track move count.
+4. Reset to start again.
 
-Simply open `index.html` in your browser to start playing the puzzle.
+## Example Outputs
 
----
+- Browser puzzle board
+- Shuffled puzzle layout
+- Completed puzzle state
 
-## Hosting
+## Security And Privacy
 
-### Using GitHub Pages
-1. Push the project to a GitHub repository.
-2. Go to **Settings** > **Pages**.
-3. Select the branch and root directory as the source.
-4. Access your puzzle at `https://<username>.github.io/<repository>/`.
+This is a static browser demo. Do not add personal images, private notebooks, credentials, or API keys to the repository.
 
-### Using Netlify or Vercel
-1. Drag and drop the project folder into the platform’s dashboard.
-2. Follow on-screen instructions to deploy.
+## Current Status
 
----
+Demo / learning proof of concept.
 
-## How to Play
+## Roadmap
 
-1. **Shuffle**: The puzzle starts with shuffled pieces.
-2. **Drag & Drop**: Rearrange the pieces by dragging them into place.
-3. **Score**: Watch your score increase as you make moves.
-4. **Reset**: Click the reset button to start over with a fresh shuffle.
+- Fix repository naming typo if retained
+- Separate unrelated notebook or app content
+- Add screenshot of gameplay
+- Add clear GitHub Pages deployment instructions
+- Mark as experimental if not actively improved
 
----
+## Disclaimer
 
-## Contributing
-
-Contributions are welcome! Feel free to submit a pull request or suggest features.
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-### Have Fun Solving the Puzzle! 🧩
-
+This is personal portfolio and learning-demo work unless otherwise stated. It is not a production application.
