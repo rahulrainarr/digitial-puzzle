@@ -1,0 +1,6 @@
+brightsteps/android/.gradle/
+brightsteps/android/build/
+brightsteps/android/tools/
+brightsteps/android/app/build/
+**/qa-*.png
+*.tmp

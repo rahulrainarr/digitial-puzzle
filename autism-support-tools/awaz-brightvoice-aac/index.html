@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2f6f67" />
+    <title>BrightVoice AAC</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">B</div>
+        <div>
+          <h1>BrightVoice</h1>
+          <p>My communication space</p>
+        </div>
+      </div>
+      <button class="icon-button" id="settingsButton" type="button" aria-label="Open caregiver settings">
+        <span aria-hidden="true">&#9881;</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="sentence-panel" aria-label="Sentence builder">
+        <div class="sentence-label">I want to say</div>
+        <div class="sentence-output" id="sentenceOutput" role="status" aria-live="polite">
+          <span class="placeholder">Tap words to build a message</span>
+        </div>
+        <div class="sentence-actions">
+          <button class="action-button secondary" id="undoButton" type="button">&#8617; Undo</button>
+          <button class="action-button secondary" id="clearButton" type="button">&#10005; Clear</button>
+          <button class="action-button speak" id="speakButton" type="button">&#9654; Speak</button>
+        </div>
+      </section>
+
+      <section class="quick-panel" aria-label="Always available core words">
+        <div class="quick-label">Always available core words</div>
+        <div class="quick-row">
+        <button class="quick-card" data-quick="yes"><span>&#10003;</span>Yes</button>
+        <button class="quick-card" data-quick="no"><span>&#10005;</span>No</button>
+        <button class="quick-card" data-quick="i"><span>&#128587;</span>I</button>
+        <button class="quick-card" data-quick="want"><span>&#129330;</span>Want</button>
+        <button class="quick-card" data-quick="need"><span>&#128588;</span>Need</button>
+        <button class="quick-card" data-quick="more"><span>+</span>More</button>
+        <button class="quick-card" data-quick="help"><span>?</span>Help</button>
+        <button class="quick-card" data-quick="stop"><span>&#9632;</span>Stop</button>
+        <button class="quick-card" data-quick="please"><span>&#9829;</span>Please</button>
+        <button class="quick-card" data-quick="finished"><span>&#10003;</span>Finished</button>
+        </div>
+      </section>
+
+      <nav class="mode-tabs" aria-label="App areas">
+        <button class="mode-tab active" data-mode="board" type="button">Picture Board</button>
+        <button class="mode-tab" data-mode="keyboard" type="button">Keyboard</button>
+        <button class="mode-tab" data-mode="learn" type="button">Learn Words</button>
+      </nav>
+
+      <section class="mode-panel active" id="boardPanel">
+        <div class="category-strip" id="categoryStrip" aria-label="Word categories"></div>
+        <div class="card-grid" id="cardGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="mode-panel" id="keyboardPanel">
+        <div class="keyboard-card">
+          <label for="typedMessage">Type a message</label>
+          <textarea id="typedMessage" rows="4" placeholder="Type what you want to say..."></textarea>
+          <div class="suggestion-row" id="suggestionRow"></div>
+          <div class="keyboard-actions">
+            <button class="action-button secondary" id="addTypedButton" type="button">Add to sentence</button>
+            <button class="action-button speak" id="speakTypedButton" type="button">&#9654; Speak typed message</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="mode-panel" id="learnPanel">
+        <div class="learn-card">
+          <div>
+            <p class="eyebrow">Vocabulary practice</p>
+            <h2>What word is this?</h2>
+            <p>Tap the picture, listen, and choose the matching word.</p>
+          </div>
+          <button class="practice-picture" id="practicePicture" type="button" aria-label="Hear practice word">
+            <span id="practiceEmoji">&#127822;</span>
+            <small>Tap to listen</small>
+          </button>
+          <div class="practice-options" id="practiceOptions"></div>
+          <div class="practice-feedback" id="practiceFeedback" role="status" aria-live="polite"></div>
+          <button class="action-button secondary" id="nextPracticeButton" type="button">Next word</button>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="settingsDialog">
+      <form method="dialog" class="settings-form">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Caregiver area</p>
+            <h2>Personalize BrightVoice</h2>
+          </div>
+          <button class="icon-button" value="cancel" aria-label="Close settings" type="submit">&#10005;</button>
+        </div>
+
+        <label>
+          Child's name
+          <input id="childNameInput" type="text" maxlength="30" placeholder="My child" />
+        </label>
+
+        <label>
+          Card size
+          <select id="cardSizeSelect">
+            <option value="large">Large cards</option>
+            <option value="extra-large">Extra large cards</option>
+            <option value="compact">More cards on screen</option>
+          </select>
+        </label>
+
+        <label>
+          Vocabulary level
+          <select id="vocabularyLevelSelect">
+            <option value="1">Starter words</option>
+            <option value="2">Growing vocabulary</option>
+            <option value="3">Full vocabulary</option>
+          </select>
+        </label>
+
+        <label>
+          Speech rate
+          <input id="speechRateInput" type="range" min="0.6" max="1.2" step="0.1" value="0.9" />
+        </label>
+
+        <div class="settings-section">
+          <h3>Add a personal word</h3>
+          <div class="form-grid">
+            <label>
+              Word or phrase
+              <input id="customWordInput" type="text" maxlength="40" placeholder="Grandma" />
+            </label>
+            <label>
+              Picture emoji
+              <input id="customEmojiInput" type="text" maxlength="4" placeholder="&#128105;" />
+            </label>
+            <label>
+              Category
+              <select id="customCategorySelect"></select>
+            </label>
+          </div>
+          <button class="action-button add" id="addCustomWordButton" type="button">+ Add personal word</button>
+          <p class="form-message" id="customWordMessage" role="status"></p>
+        </div>
+
+        <div class="settings-section">
+          <h3>Personal words</h3>
+          <div class="custom-word-list" id="customWordList"></div>
+        </div>
+
+        <button class="action-button speak full-width" id="saveSettingsButton" value="default" type="submit">Save settings</button>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>

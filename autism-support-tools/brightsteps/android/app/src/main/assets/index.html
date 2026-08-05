@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#38598b" />
+    <title>BrightSteps Puzzle Time</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">*</div>
+        <div>
+          <h1>BrightSteps</h1>
+          <p>Puzzle time, one step at a time</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="soft-button" id="homeButton" type="button">Home</button>
+        <button class="soft-button" id="settingsButton" type="button">Settings</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="welcome-bar" aria-live="polite">
+        <div>
+          <p class="eyebrow">Today is your puzzle day</p>
+          <h2 id="welcomeText">Welcome!</h2>
+        </div>
+        <div class="progress-box">
+          <span id="starCount">0</span>
+          <small>stars earned</small>
+        </div>
+      </section>
+
+      <section id="menuView" class="view active">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Choose one activity</p>
+            <h2>What would you like to play?</h2>
+          </div>
+          <span class="difficulty-badge" id="difficultyBadge">Easy</span>
+        </div>
+        <section class="recommendation-card" id="recommendationCard" aria-live="polite">
+          <div>
+            <p class="eyebrow">Suggested next</p>
+            <h3 id="recommendationTitle">Try a puzzle</h3>
+            <p id="recommendationReason">BrightSteps will suggest activities after puzzle time begins.</p>
+          </div>
+          <button class="primary-button" id="startRecommendationButton" type="button">Start suggested puzzle</button>
+        </section>
+        <div class="learning-summary" id="learningSummary"></div>
+        <div class="puzzle-grid" id="puzzleMenu"></div>
+        <div class="calm-note">
+          <strong>Take your time.</strong>
+          You can pause, try again, or choose another puzzle whenever you want.
+        </div>
+      </section>
+
+      <section id="gameView" class="view">
+        <div class="game-topline">
+          <button class="soft-button" id="backButton" type="button">&lt; Back</button>
+          <div>
+            <p class="eyebrow" id="gameType">Puzzle</p>
+            <h2 id="gameTitle">Puzzle title</h2>
+          </div>
+          <button class="soft-button" id="newPuzzleButton" type="button">New puzzle</button>
+        </div>
+        <p class="instruction" id="instruction"></p>
+        <div id="gameArea" class="game-area"></div>
+        <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <dialog id="profileDialog">
+      <form method="dialog" class="dialog-card" id="profileForm">
+        <p class="eyebrow">Let us set up puzzle time</p>
+        <h2>Tell us about the puzzle player</h2>
+        <p class="dialog-intro">This helps BrightSteps show the right level of puzzles. Details stay on this laptop.</p>
+        <label>
+          Name
+          <input id="nameInput" type="text" maxlength="24" placeholder="Enter name" required />
+        </label>
+        <label>
+          Age
+          <input id="ageInput" type="number" min="4" max="18" value="8" required />
+        </label>
+        <fieldset>
+          <legend>Difficulty</legend>
+          <div class="choice-row">
+            <label class="choice-card"><input type="radio" name="difficulty" value="easy" checked /><span>Easy<small>Simple first steps</small></span></label>
+            <label class="choice-card"><input type="radio" name="difficulty" value="medium" /><span>Medium<small>A little more thinking</small></span></label>
+            <label class="choice-card"><input type="radio" name="difficulty" value="challenge" /><span>Challenge<small>More choices and steps</small></span></label>
+            <label class="choice-card"><input type="radio" name="difficulty" value="expert" /><span>Expert<small>Harder multi-step puzzles</small></span></label>
+          </div>
+        </fieldset>
+        <button class="primary-button full-width" value="default" type="submit">Start puzzle time</button>
+      </form>
+    </dialog>
+
+    <dialog id="settingsDialog">
+      <form method="dialog" class="dialog-card" id="settingsForm">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">Caregiver settings</p>
+            <h2>Personalize BrightSteps</h2>
+          </div>
+          <button class="soft-button" value="cancel" type="submit" aria-label="Close settings">×</button>
+        </div>
+        <label class="toggle-row">
+          <span><strong>Spoken encouragement</strong><small>Read positive messages aloud</small></span>
+          <input id="speechToggle" type="checkbox" checked />
+        </label>
+        <label class="toggle-row">
+          <span><strong>Quiet mode</strong><small>Use fewer visual celebration effects</small></span>
+          <input id="quietToggle" type="checkbox" />
+        </label>
+        <label class="toggle-row">
+          <span><strong>Adaptive puzzle suggestions</strong><small>Recommend practice activities from puzzle responses</small></span>
+          <input id="adaptiveToggle" type="checkbox" checked />
+        </label>
+        <label class="toggle-row">
+          <span><strong>Automatic difficulty adjustment</strong><small>Move difficulty gradually after several responses</small></span>
+          <input id="autoDifficultyToggle" type="checkbox" />
+        </label>
+        <p class="settings-note">Suggestions are based only on activity responses. They are not a medical or developmental assessment.</p>
+        <button class="soft-button full-width" id="editProfileButton" value="cancel" type="button">Edit name, age, or difficulty</button>
+        <button class="primary-button full-width" value="default" type="submit">Save settings</button>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>

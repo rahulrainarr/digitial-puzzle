@@ -1,0 +1,25 @@
+INSTALL BRIGHTSTEPS ON A SAMSUNG PHONE
+=====================================
+
+APK FILE
+--------
+Use:
+  BrightSteps-Puzzle-Android.apk
+
+INSTALL STEPS
+-------------
+1. Copy the APK file to the Samsung phone.
+2. Open the Samsung "My Files" app.
+3. Open the APK file.
+4. If Android asks, allow "Install unknown apps" for My Files only.
+5. Install BrightSteps Puzzle Time.
+6. Keep Google Play Protect enabled.
+7. After installation, turn off the "Install unknown apps" permission again.
+
+IMPORTANT
+---------
+This direct-install APK is intended for testing and personal use. Android may
+show a normal warning because the app was not downloaded from Google Play.
+
+For wider distribution, publish a release build through Google Play using Play
+App Signing. That gives users a more familiar and safer installation path.

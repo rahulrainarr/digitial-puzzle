@@ -1,4 +1,13 @@
-# Digital Puzzle Learning Demo
+# Autism Support tools
+
+This repository now includes an `autism-support-tools/` section with two local-first support apps:
+
+- `autism-support-tools/brightsteps/` - BrightSteps Puzzle Time for educational puzzle engagement on Android and Windows
+- `autism-support-tools/awaz-brightvoice-aac/` - Awaz / BrightVoice AAC starter communication app for Windows
+
+See [`autism-support-tools/README.md`](autism-support-tools/README.md) for app details, release files, and safety notes.
+
+## Legacy Digital Puzzle Learning Demo
 
 ## Executive Summary
 
