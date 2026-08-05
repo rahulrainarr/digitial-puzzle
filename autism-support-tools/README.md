@@ -19,9 +19,9 @@ Key points:
 - Offline Android WebView app with no Android permissions
 - Windows/browser version included
 
-### Awaz / BrightVoice AAC Starter
+### BrightVoice AAC Starter
 
-Location: `awaz-brightvoice-aac/`
+Location: `brightvoice-aac/`
 
 BrightVoice is an offline augmentative and alternative communication starter app for Windows laptops and touch devices. It supports visual communication, sentence building, quick core words, vocabulary categories, and caregiver personalization.
 
@@ -33,6 +33,12 @@ Included files:
 - `BrightVoice-AAC-Windows.exe`
 - `Start-BrightVoice-AAC.cmd`
 - `README.txt`
+
+### Digital Puzzle
+
+Location: `digitial-puzzle/`
+
+The original browser puzzle is included as a lightweight play-and-learning activity. It is retained as a legacy prototype under the Autism Support tools collection.
 
 ## Release Files
 
